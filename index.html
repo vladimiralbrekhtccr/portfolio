@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vladimir Albrekht</title>
+<meta name="description" content="Vladimir Albrekht: ML researcher at ISSAI, Nazarbayev University. Multimodal LLMs (vision, audio, text), reasoning and RL, Kazakh AI, edge AI and 3D worlds.">
+<meta property="og:title" content="Vladimir Albrekht">
+<meta property="og:description" content="ML researcher at ISSAI, Nazarbayev University. Multimodal LLMs, reasoning and RL, Kazakh AI, edge AI, 3D worlds.">
+<meta property="og:image" content="assets/foggen-evolution.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c3aed'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3EVA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one paper column; hero, a featured project, then a grid of work, papers, demos and teaching. */
+:root {
+  --text: #15121c; --text-2: #3a3644; --text-3: #6f6a7a;
+  --accent: #7c3aed; --accent-2: #a78bfa; --accent-bg: #f6f1ff; --accent-line: #d9c8ff;
+  --bg: #fdfcff; --card: #faf8fe; --card-hover: #f3eeff;
+  --border: #e6e1ee; --rule: #efebf5; --code-bg: #f3f1f8;
+  --green: #15803d; --green-bg: #effbf3; --blue: #1d4ed8; --blue-bg: #eff4ff; --orange: #c2410c; --orange-bg: #fff6eb;
+  --f-body: 'Literata', Georgia, serif;
+  --f-ui: 'DM Sans', system-ui, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #ece9f2; --text-2: #bdb8c8; --text-3: #8a8597;
+    --accent: #b197fc; --accent-2: #7c3aed; --accent-bg: #1f1830; --accent-line: #43356a;
+    --bg: #111017; --card: #17151f; --card-hover: #1e1a2b;
+    --border: #2a2734; --rule: #221f2b; --code-bg: #1c1a24;
+    --green: #4ade80; --green-bg: #0d1f14; --blue: #7aa7ff; --blue-bg: #0e1528; --orange: #fb923c; --orange-bg: #22170c;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text-2); font-family: var(--f-body); font-size: 16.5px; line-height: 1.72; }
+.paper { max-width: 900px; margin: 0 auto; padding: 56px 24px 48px; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+p { margin: 0; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+.nav-in { max-width: 900px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; gap: 18px; font: 500 13.5px/1 var(--f-ui); overflow-x: auto; white-space: nowrap; }
+.nav-in a { color: var(--text-3); text-decoration: none; }
+.nav-in a:hover { color: var(--accent); }
+.mono-badge { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--accent); color: #fff !important; font: 700 12px/1 var(--f-body); flex: none; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: start; }
+.eyebrow { font: 600 12px/1.4 var(--f-ui); text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+h1 { margin: 8px 0 10px; font: 700 40px/1.15 var(--f-body); color: var(--text); letter-spacing: -0.5px; text-wrap: balance; }
+.lede { font-size: 19px; line-height: 1.6; color: var(--text-2); max-width: 36em; text-wrap: pretty; }
+.lede em { color: var(--text); font-style: italic; }
+.meta { margin-top: 12px; font: 400 14px/1.6 var(--f-ui); color: var(--text-3); }
+.meta span { margin: 0 7px; color: var(--accent-line); }
+.now { margin-top: 18px; display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px 7px 10px; border: 1px solid var(--accent-line); background: var(--accent-bg); border-radius: 999px; font: 500 13.5px/1.35 var(--f-ui); color: var(--text-2); }
+.now b { color: var(--accent); font-weight: 600; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 60%, transparent); animation: pulse 2.4s infinite; flex: none; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 7px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.links { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+.links a { display: inline-flex; align-items: center; gap: 7px; font: 500 13px/1 var(--f-mono); text-decoration: none; color: var(--text-2); border: 1px solid var(--border); border-radius: 6px; padding: 8px 11px; background: var(--card); transition: background .15s, color .15s, border-color .15s; }
+.links a:hover { background: var(--card-hover); color: var(--accent); border-color: var(--accent-line); }
+.links svg { width: 15px; height: 15px; flex: none; }
+.avatar { width: 132px; height: 132px; border-radius: 28px; background: var(--accent-bg); border: 1px solid var(--accent-line); display: grid; place-items: center; position: relative; overflow: hidden; }
+.avatar svg { width: 100%; height: 100%; }
+.avatar-label { position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font: 500 10.5px var(--f-mono); color: var(--text-3); }
+
+/* sections */
+section { margin-top: 56px; }
+h2 { margin: 0 0 18px; font: 700 22px/1.3 var(--f-ui); color: var(--text); display: flex; align-items: baseline; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+h2 small { font: 400 13px var(--f-mono); color: var(--text-3); margin-left: auto; }
+h3 { margin: 0; font: 700 17px/1.35 var(--f-ui); color: var(--text); }
+
+/* featured */
+.feature { display: grid; grid-template-columns: 1.05fr 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--card); }
+.feature figure { margin: 0; background: #fff; border-right: 1px solid var(--border); display: grid; place-items: center; min-height: 220px; }
+.feature figure img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 10px; }
+.feature .body { padding: 22px 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.feature p { font-size: 15.5px; line-height: 1.65; }
+.kicker { font: 700 11.5px/1.3 var(--f-ui); text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent); }
+.flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font: 500 12.5px/1.3 var(--f-mono); }
+.flow span { padding: 4px 8px; border-radius: 5px; background: var(--bg); border: 1px solid var(--border); color: var(--text-2); }
+.flow i { color: var(--text-3); font-style: normal; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 500 12px/1.4 var(--f-mono); border-radius: 4px; padding: 2px 8px; background: var(--code-bg); color: var(--text-2); }
+.tag.p { background: var(--accent-bg); color: var(--accent); }
+.tag.g { background: var(--green-bg); color: var(--green); }
+.tag.b { background: var(--blue-bg); color: var(--blue); }
+.tag.o { background: var(--orange-bg); color: var(--orange); }
+.more { font: 600 13.5px var(--f-ui); }
+
+/* cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin-top: 14px; }
+.card { border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 18px 20px; display: grid; gap: 8px; align-content: start; min-width: 0; transition: background .15s, transform .15s, border-color .15s; }
+.card:hover { background: var(--card-hover); border-color: var(--accent-line); transform: translateY(-2px); }
+.card p { font-size: 15px; line-height: 1.6; }
+.card .media { margin: -18px -20px 6px; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--border); border-radius: 10px 10px 0 0; background: var(--code-bg); }
+.card .media img, .card .media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card .links-row { display: flex; flex-wrap: wrap; gap: 12px; font: 600 13px var(--f-ui); margin-top: 2px; }
+.card .links-row a { text-decoration: none; }
+.card .links-row a:hover { text-decoration: underline; }
+.wide { grid-column: span 2; }
+
+/* papers */
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.pub { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; }
+.pub-year { font: 600 14px/1.9 var(--f-mono); color: var(--accent); }
+.pub-title { font: 600 16px/1.5 var(--f-body); color: var(--text); }
+.pub-authors { font-size: 14.5px; }
+.pub-authors b { color: var(--text); }
+.pub-meta { font: 400 13px/1.6 var(--f-mono); color: var(--text-3); overflow-wrap: anywhere; }
+.pub-meta a { color: var(--text-3); }
+.pub-meta a:hover { color: var(--accent); }
+.status { font: 600 11px/1 var(--f-ui); text-transform: uppercase; letter-spacing: .8px; padding: 3px 7px; border-radius: 4px; background: var(--orange-bg); color: var(--orange); margin-left: 6px; vertical-align: 2px; }
+
+/* demos */
+.demos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.demo { text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; display: grid; gap: 3px; background: var(--bg); transition: background .15s, border-color .15s; }
+.demo:hover { background: var(--card-hover); border-color: var(--accent-line); }
+.demo b { font: 600 14.5px/1.35 var(--f-ui); color: var(--text); }
+.demo span { font-size: 13.5px; line-height: 1.5; color: var(--text-3); }
+.demo code { font: 500 12px var(--f-mono); color: var(--accent); }
+
+/* timeline */
+.timeline { border-left: 2px solid var(--accent-line); margin-left: 6px; padding-left: 22px; display: grid; gap: 18px; }
+.tl { position: relative; }
+.tl::before { content: ""; position: absolute; left: -29px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.tl-when { font: 600 12.5px/1.5 var(--f-mono); color: var(--accent); }
+.tl b { font-family: var(--f-ui); color: var(--text); }
+.tl p { font-size: 15px; line-height: 1.6; }
+
+/* two-col info */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.box { border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; background: var(--card); min-width: 0; }
+.box h3 { font-size: 15px; margin-bottom: 8px; }
+.box ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.7; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span { font: 500 12.5px/1.4 var(--f-mono); padding: 3px 8px; border-radius: 4px; background: var(--code-bg); border: 1px solid var(--border); color: var(--text-2); }
+.skill-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 8px 0; border-bottom: 1px dashed var(--rule); }
+.skill-row:last-child { border-bottom: 0; }
+.skill-row dt { font: 600 12px/1.6 var(--f-ui); text-transform: uppercase; letter-spacing: 1px; color: var(--text-3); }
+.skill-row dd { margin: 0; }
+
+footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font: 400 13.5px/1.6 var(--f-ui); color: var(--text-3); }
+footer .mail { font-family: var(--f-mono); color: var(--text-2); user-select: all; }
+
+@media (max-width: 720px) {
+  .paper { padding: 32px 16px 36px; }
+  .nav-in { padding: 10px 16px; }
+  h1 { font-size: 32px; }
+  .lede { font-size: 17.5px; }
+  .hero { grid-template-columns: 1fr; }
+  .avatar { display: none; }
+  .feature { grid-template-columns: 1fr; }
+  .feature figure { border-right: 0; border-bottom: 1px solid var(--border); }
+  .wide { grid-column: auto; }
+  .cols { grid-template-columns: 1fr; }
+  .pub { grid-template-columns: 1fr; gap: 2px; }
+  .skill-row { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="nav-in">
+    <a class="mono-badge" href="#top" aria-label="Top">VA</a>
+    <a href="#work">Work</a>
+    <a href="#papers">Papers</a>
+    <a href="#demos">Demos</a>
+    <a href="#open-source">Open source</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#about">About</a>
+  </div>
+</nav>
+
+<main class="paper" id="top">
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">ML Researcher · ISSAI, Nazarbayev University</div>
+      <h1>Vladimir Albrekht</h1>
+      <p class="lede">I train <em>multimodal language models</em> that see, hear and read, and I build things people can touch: Kazakh AI, edge AI and walkable 3D worlds.</p>
+      <p class="meta">Astana, Kazakhstan<span>/</span>Data Scientist since 2024<span>/</span>BSc Computer Science</p>
+      <div class="now"><span class="dot" aria-hidden="true"></span><span><b>Now:</b> teaching small models to say “I don't know” and ask a bigger model for help.</span></div>
+      <div class="links">
+        <a href="https://github.com/vladimiralbrekhtccr"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
+        <a href="https://huggingface.co/CCRss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="11" r="8"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/><path d="M8.5 13.5c1.8 2 5.2 2 7 0"/></svg>Hugging Face</a>
+        <a href="https://www.linkedin.com/in/vladimir-albrekht-813187274/"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z"/></svg>LinkedIn</a>
+        <a href="https://orcid.org/0009-0007-9692-1320"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8.5 8v8M11.5 8h2a4 4 0 0 1 0 8h-2V8Z"/></svg>ORCID</a>
+        <a href="https://www.semanticscholar.org/author/97050995"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M7 9.5V15c3 2.5 7 2.5 10 0V9.5"/></svg>Semantic Scholar</a>
+        <a href="https://x.com/Albrekht_V"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg>@Albrekht_V</a>
+        <a href="mailto:sluminat2@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>Email</a>
+      </div>
+    </div>
+    <div class="avatar" aria-hidden="true">
+      <svg viewBox="0 0 132 132">
+        <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--accent-bg)"/><stop offset="1" style="stop-color:var(--card)"/></linearGradient></defs>
+        <rect width="132" height="132" fill="url(#sky)"/>
+        <circle cx="94" cy="38" r="13" style="fill:var(--accent-2)" opacity=".55"/>
+        <path d="M0 92 C 22 78, 38 84, 56 74 S 92 66, 132 80 V132 H0Z" style="fill:var(--accent-line)" opacity=".8"/>
+        <path d="M0 104 C 30 94, 52 100, 76 92 S 112 90, 132 98 V132 H0Z" style="fill:var(--accent)" opacity=".28"/>
+        <g style="fill:var(--accent)"><circle cx="34" cy="52" r="2.2"/><circle cx="48" cy="44" r="2.2"/><circle cx="62" cy="52" r="2.2"/><circle cx="48" cy="60" r="2.2"/></g>
+        <g style="stroke:var(--accent)" stroke-width="1.2" opacity=".7"><path d="M34 52 48 44 62 52 48 60Z"/><path d="M34 52 62 52M48 44 48 60"/></g>
+      </svg>
+      <span class="avatar-label">steppe · nets · splats</span>
+    </div>
+  </header>
+
+  <section id="work">
+    <h2>Selected work <small>2024 – 2026</small></h2>
+
+    <article class="feature">
+      <figure><img src="assets/foggen-evolution.jpg" alt="FogGen accuracy across 14 evolution rounds in seven domains" loading="lazy"></figure>
+      <div class="body">
+        <div class="kicker">Featured · first author</div>
+        <h3>FogGen: a self-aware edge–cloud LLM router</h3>
+        <p>A 0.6B model on the phone writes a confidence score before it answers. When it is not sure, it hands the question to a 30B model in the cloud. I built the closed loop of SFT and conditional GRPO that trains this behaviour over 14 rounds in seven domains.</p>
+        <div class="flow" aria-label="FogGen flow"><span>query</span><i>→</i><span>edge 0.6B: confidence</span><i>→</i><span>sure? answer</span><i>/</i><span>else cloud 30B</span></div>
+        <div class="tags"><span class="tag p">GRPO</span><span class="tag g">calibration</span><span class="tag b">on-device</span><span class="tag">Qwen3</span></div>
+        <p class="more"><a href="https://huggingface.co/issai/foggen">Model on Hugging Face</a> · <a href="https://kitan-a.com/foggen_results/">14-round results</a></p>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="card">
+        <div class="kicker">Audio + vision + text</div>
+        <h3>Oylan2</h3>
+        <p>Kazakhstan's first language–audio–vision model, trained on more than 3,000 hours of audio. I added audio-model support to vLLM and ms-swift.</p>
+        <div class="links-row"><a href="https://issai.nu.edu.kz/2025/04/11/kazakhstan-paves-the-way-in-the-ai-race-issai-launches-oylan2-the-nations-first-language-audio-vision-model/">ISSAI news</a><a href="https://github.com/vladimiralbrekhtccr/ms-swift-audio-integration">Code</a></div>
+      </article>
+      <article class="card">
+        <div class="kicker">Vision–language at scale</div>
+        <h3>Oylan</h3>
+        <p>Training and ablations for a VLM on more than 10 million images and 50 million question–answer pairs, Kazakhstan's largest AI dataset.</p>
+        <div class="links-row"><a href="https://issai.nu.edu.kz/2025/01/17/issai-launches-its-groundbreaking-language-vision-model-oylan-in-pilot-mode/">ISSAI news</a></div>
+      </article>
+      <article class="card">
+        <div class="kicker">Small VLM · IEEE Access</div>
+        <h3>Qolda</h3>
+        <p>A compact 4.3B Kazakh–Russian–English vision–language model (InternViT-300M + Qwen3-4B). I worked on training, ablations and the four-stage adaptation pipeline.</p>
+        <div class="links-row"><a href="https://huggingface.co/issai/Qolda">Model</a><a href="https://doi.org/10.1109/ACCESS.2026.3676919">Paper</a></div>
+      </article>
+      <article class="card">
+        <div class="kicker">Speech</div>
+        <h3>English–Kazakh speech translation</h3>
+        <p>Whisper-based models fine-tuned on a 100k-hour English–Kazakh dataset. Also <a href="https://tilsync.nu.edu.kz/">TilSync</a>, a real-time subtitles app I designed and built end to end.</p>
+      </article>
+      <article class="card">
+        <div class="media"><img src="assets/issai-vr.jpg" alt="ISSAI VR: the Nazarbayev University atrium with archery targets" loading="lazy"></div>
+        <div class="kicker">WebXR · Meta Quest</div>
+        <h3>ISSAI VR</h3>
+        <p>Archery and blade games inside a reconstruction of our university atrium. 21 releases in 16 days, played by visitors at NU Open House 2026.</p>
+        <div class="links-row"><a href="https://kitan-a.com/issai-vr/">Play in browser</a></div>
+      </article>
+      <article class="card">
+        <div class="media"><video src="assets/lab-3dgs.mp4" poster="assets/lab-3dgs.jpg" autoplay muted loop playsinline aria-label="Fly-through of a lab captured with 3D Gaussian Splatting"></video></div>
+        <div class="kicker">3D Gaussian Splatting</div>
+        <h3>World models & 3DGS course</h3>
+        <p>Research on world models and 3D scene synthesis, plus a 7-module interactive course on Gaussian Splatting that runs in the browser.</p>
+        <div class="links-row"><a href="https://kitan-a.com/3dgs/learn/">Open the course</a><a href="https://github.com/vladimiralbrekhtccr/world-models">Repo</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="papers">
+    <h2>Papers <small><a href="https://www.semanticscholar.org/author/97050995">Semantic Scholar</a></small></h2>
+    <ol class="pubs" reversed>
+      <li class="pub"><div class="pub-year">2026</div><div>
+        <div class="pub-title">FogGen: A Self-Evolving Edge-Cloud LLM Router with Predictive Confidence Tokens <span class="status">under review</span></div>
+        <div class="pub-authors"><b>V. Albrekht</b>, A. Maxutov, Zh. Sultanova, H. A. Varol</div>
+        <div class="pub-meta"><a href="https://huggingface.co/issai/foggen">huggingface.co/issai/foggen</a></div></div></li>
+      <li class="pub"><div class="pub-year">2026</div><div>
+        <div class="pub-title">Translate, Search, or Answer: Cost-Aware Cross-Lingual Retrieval for Kazakh Small Language Models</div>
+        <div class="pub-authors">A. Maxutov, N. Medeu, <b>V. Albrekht</b>, D. Danenov, H. A. Varol</div>
+        <div class="pub-meta">Big Data and Cognitive Computing 10, 278 · <a href="https://doi.org/10.3390/bdcc10080278">doi:10.3390/bdcc10080278</a></div></div></li>
+      <li class="pub"><div class="pub-year">2026</div><div>
+        <div class="pub-title">Qolda: A Small Vision–Language Model for the Kazakh Language</div>
+        <div class="pub-authors">B. Arystanbekov, A. Nurimanov, A. Maxutov, <b>V. Albrekht</b>, A. Kuzdeuov, H. A. Varol</div>
+        <div class="pub-meta">IEEE Access 14, 46392–46414 · <a href="https://doi.org/10.1109/ACCESS.2026.3676919">doi:10.1109/ACCESS.2026.3676919</a></div></div></li>
+      <li class="pub"><div class="pub-year">2025</div><div>
+        <div class="pub-title">Top2Vec Topic Modeling to Analyze the Dynamics of Publication Activity Related to Environmental Monitoring Using Unmanned Aerial Vehicles</div>
+        <div class="pub-authors"><b>V. Albrekht</b>, R. I. Mukhamediev, Y. Popova, E. Muhamedijeva, A. Botaibekov</div>
+        <div class="pub-meta">Publications 13, 15 · <a href="https://doi.org/10.3390/publications13020015">doi:10.3390/publications13020015</a></div></div></li>
+    </ol>
+  </section>
+
+  <section id="demos">
+    <h2>Live demos <small>open in any browser</small></h2>
+    <div class="demos">
+      <a class="demo" href="https://kitan-a.com/magical_tablet/"><b>ISSAI AI Notebook</b><span>Write by hand; the AI reads it and explains.</span><code>/magical_tablet</code></a>
+      <a class="demo" href="https://kitan-a.com/3dgs/learn/"><b>Learn 3DGS</b><span>Interactive Gaussian Splatting course.</span><code>/3dgs/learn</code></a>
+      <a class="demo" href="https://kitan-a.com/issai-vr/"><b>ISSAI VR</b><span>WebXR games in the NU atrium.</span><code>/issai-vr</code></a>
+      <a class="demo" href="https://kitan-a.com/distributed_agents/"><b>fogswarm</b><span>One giant model or 500 small ones in browser tabs?</span><code>/distributed_agents</code></a>
+      <a class="demo" href="https://kitan-a.com/foggen_results/"><b>FogGen results</b><span>All 14 rounds of self-evolving training.</span><code>/foggen_results</code></a>
+      <a class="demo" href="https://kitan-a.com/gs_playground/"><b>GS-Playground</b><span>A visual explainer.</span><code>/gs_playground</code></a>
+      <a class="demo" href="https://kitan-a.com/vqvae/"><b>VQ-VAE from zero</b><span>The image tokenizer, explained.</span><code>/vqvae</code></a>
+      <a class="demo" href="https://kitan-a.com/gaussiangpt/"><b>GaussianGPT from zero</b><span>Transformers that make 3D scenes.</span><code>/gaussiangpt</code></a>
+    </div>
+  </section>
+
+  <section id="open-source">
+    <h2>Open source & data</h2>
+    <div class="cols">
+      <div class="box">
+        <h3>Code</h3>
+        <ul>
+          <li><a href="https://github.com/vladimiralbrekhtccr/qwen3omni-fine-tuning">qwen3omni-fine-tuning</a>: fine-tune Qwen3-Omni on text, audio and images</li>
+          <li><a href="https://github.com/vladimiralbrekhtccr/gemma_3_avt_zfg">gemma_3_avt_zfg</a>: Gemma 3 with a Whisper audio encoder</li>
+          <li><a href="https://github.com/vladimiralbrekhtccr/ms-swift-audio-integration">ms-swift-audio-integration</a>: audio models in ms-swift</li>
+          <li><a href="https://github.com/vladimiralbrekhtccr/ISSAI_SRP_2025">ISSAI_SRP_2025</a>: train a small LLM from scratch in 8 weeks</li>
+          <li><a href="https://github.com/vladimiralbrekhtccr/kitan-telegram">kitan-telegram</a>: Telegram bridge to coding agents, with voice</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Models & datasets</h3>
+        <ul>
+          <li><a href="https://huggingface.co/issai/foggen">issai/foggen</a> + Qwen3 and Gemma 3 variants, <a href="https://huggingface.co/datasets/issai/foggen-data">foggen-data</a></li>
+          <li><a href="https://huggingface.co/issai/Qolda">issai/Qolda</a>, Kazakh VLM (co-author)</li>
+          <li><a href="https://huggingface.co/CCRss/tokenizer_t5_kz">Kazakh T5 tokenizer</a> and Kazakh paraphrase / question-pair datasets</li>
+          <li><a href="https://huggingface.co/datasets/CCRss/arXiv_dataset">arXiv papers dataset</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching & talks</h2>
+    <div class="timeline">
+      <div class="tl"><div class="tl-when">Oct 2026</div><b>ISSAI Fall Research Program</b><p>Lead of the AI Engineering track: school students build their own projects with AI agents.</p></div>
+      <div class="tl"><div class="tl-when">Sep 2026</div><b>CMAI 2026 workshop</b><p>“RYŌTENKAI: One-Shot Domain Expansion for Walkable 3D Worlds”, 1st International Conference on Mathematics and AI, Nazarbayev University.</p></div>
+      <div class="tl"><div class="tl-when">Sep 2026</div><b>NU Open House</b><p>ISSAI AI Notebook and ISSAI VR games at the ISSAI booth.</p></div>
+      <div class="tl"><div class="tl-when">Summer 2025</div><b>ISSAI Summer Research Program</b><p>Designed and taught the track on training small Kazakh/English/Russian LLMs from scratch.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Skills & background</h2>
+    <dl>
+      <div class="skill-row"><dt>Training</dt><dd class="chips"><span>PyTorch</span><span>ms-swift</span><span>DeepSpeed</span><span>FSDP</span><span>GRPO / RLHF</span><span>LoRA</span><span>Slurm · 8×H100 / B200</span></dd></div>
+      <div class="skill-row"><dt>Models</dt><dd class="chips"><span>LLMs</span><span>VLMs</span><span>Audio LLMs</span><span>Whisper ASR</span><span>Diffusion</span><span>3D Gaussian Splatting</span></dd></div>
+      <div class="skill-row"><dt>Serving</dt><dd class="chips"><span>vLLM</span><span>AWQ / GPTQ / GGUF</span><span>Transformers</span><span>FastAPI</span></dd></div>
+      <div class="skill-row"><dt>Building</dt><dd class="chips"><span>Python</span><span>TypeScript</span><span>three.js / WebXR</span><span>AI agents & MCP</span><span>Linux</span><span>Docker</span></dd></div>
+      <div class="skill-row"><dt>Education</dt><dd>BSc Computer Science, Satbayev University, Almaty (2020–2024). Research intern in NLP, 2023–2024.</dd></div>
+      <div class="skill-row"><dt>Languages</dt><dd>English (professional), Russian (fluent), Kazakh (basic), Japanese (studying)</dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <span>Vladimir Albrekht · Astana · updated October 2026</span>
+    <span>Say hi: <span class="mail">sluminat2@gmail.com</span></span>
+  </footer>
+
+</main>
+</body>
+</html>
