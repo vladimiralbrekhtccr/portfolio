@@ -213,7 +213,6 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
 .hero { grid-template-columns: minmax(0, 1fr) 300px; align-items: center; }
 .hero-art { position: relative; margin: 0; width: 300px; justify-self: end; }
 .hero-art img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border: 2px solid var(--text); border-radius: 6px; transform: rotate(2.2deg); box-shadow: 7px 7px 0 #f6de95; background: #fff; }
-.hero-art figcaption { position: relative; z-index: 1; margin-top: 12px; text-align: center; font: 400 12.5px/1.4 var(--f-hand); color: var(--text-3); }
 .magic { position: absolute; z-index: 0; inset: -34px; border-radius: 50%;
   background:
     radial-gradient(circle, transparent 54%, color-mix(in srgb, var(--magic) 45%, transparent) 54.5%, transparent 56%),
@@ -249,7 +248,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
 
   <header class="hero">
     <div>
-      <div class="eyebrow">ML Researcher · ISSAI, Nazarbayev University</div>
+      <div class="eyebrow">ML Researcher at ISSAI, Nazarbayev University</div>
       <h1>Vladimir Albrekht</h1>
       <p class="lede">I train <em>multimodal language models</em> that see, hear and read, and I build things people can touch: Kazakh AI, edge AI and walkable 3D worlds.</p>
       <p class="meta">Astana, Kazakhstan<span>/</span>Data Scientist since 2024<span>/</span>BSc Computer Science</p>
@@ -266,8 +265,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
     </div>
     <figure class="hero-art">
       <div class="magic" aria-hidden="true"></div>
-      <img src="assets/hero-anime.jpg" alt="Two anime card-battle heroines, the mood image of this site" width="460" height="460">
-      <figcaption>mood image · anime still, not my artwork</figcaption>
+      <img src="assets/hero-anime.jpg" alt="Two anime card-battle heroines" width="460" height="460">
     </figure>
   </header>
 
@@ -300,7 +298,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
         </svg>
       </figure>
       <div class="body">
-        <div class="kicker">Featured · released by ISSAI</div>
+        <div class="kicker">Released by ISSAI</div>
         <h3>FogGen: a self-aware edge–cloud LLM router</h3>
         <p>A 0.6B model on the phone writes a confidence score before it answers. When it is not sure, it hands the question to a larger model in the cloud. It learns this with a self-evolving training loop over 14 rounds in seven domains, including Kazakh culture.</p>
         <div class="flow" aria-label="FogGen flow"><span>query</span><i>→</i><span>edge 0.6B: confidence</span><i>→</i><span>sure? answer</span><i>/</i><span>else cloud</span></div>
@@ -323,7 +321,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
         <div class="links-row"><a href="https://issai.nu.edu.kz/2025/01/17/issai-launches-its-groundbreaking-language-vision-model-oylan-in-pilot-mode/">ISSAI news</a></div>
       </article>
       <article class="card">
-        <div class="kicker">Small VLM · IEEE Access</div>
+        <div class="kicker">Small VLM, IEEE Access</div>
         <h3>Qolda</h3>
         <p>A compact 4.3B Kazakh–Russian–English vision–language model (InternViT-300M + Qwen3-4B). I worked on training, ablations and the four-stage adaptation pipeline.</p>
         <div class="links-row"><a href="https://huggingface.co/issai/Qolda">Model</a><a href="https://doi.org/10.1109/ACCESS.2026.3676919">Paper</a></div>
@@ -335,7 +333,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
       </article>
       <article class="card">
         <div class="media"><img src="assets/issai-vr.jpg" alt="ISSAI VR: the Nazarbayev University atrium with archery targets" loading="lazy"></div>
-        <div class="kicker">WebXR · Meta Quest</div>
+        <div class="kicker">WebXR on Meta Quest</div>
         <h3>ISSAI VR</h3>
         <p>Archery and blade games inside a reconstruction of our university atrium. 21 releases in 16 days, played by visitors at NU Open House 2026.</p>
         <div class="links-row"><a href="https://kitan-a.com/issai-vr/">Play in browser</a></div>
@@ -357,15 +355,15 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
       <li class="pub"><div class="pub-year">2026</div><div>
         <div class="pub-title">Translate, Search, or Answer: Cost-Aware Cross-Lingual Retrieval for Kazakh Small Language Models</div>
         <div class="pub-authors">A. Maxutov, N. Medeu, <b>V. Albrekht</b>, D. Danenov, H. A. Varol</div>
-        <div class="pub-meta">Big Data and Cognitive Computing 10, 278 · <a href="https://doi.org/10.3390/bdcc10080278">doi:10.3390/bdcc10080278</a></div></div></li>
+        <div class="pub-meta">Big Data and Cognitive Computing 10, 278, <a href="https://doi.org/10.3390/bdcc10080278">doi:10.3390/bdcc10080278</a></div></div></li>
       <li class="pub"><div class="pub-year">2026</div><div>
         <div class="pub-title">Qolda: A Small Vision–Language Model for the Kazakh Language</div>
         <div class="pub-authors">B. Arystanbekov, A. Nurimanov, A. Maxutov, <b>V. Albrekht</b>, A. Kuzdeuov, H. A. Varol</div>
-        <div class="pub-meta">IEEE Access 14, 46392–46414 · <a href="https://doi.org/10.1109/ACCESS.2026.3676919">doi:10.1109/ACCESS.2026.3676919</a></div></div></li>
+        <div class="pub-meta">IEEE Access 14, 46392–46414, <a href="https://doi.org/10.1109/ACCESS.2026.3676919">doi:10.1109/ACCESS.2026.3676919</a></div></div></li>
       <li class="pub"><div class="pub-year">2025</div><div>
         <div class="pub-title">Top2Vec Topic Modeling to Analyze the Dynamics of Publication Activity Related to Environmental Monitoring Using Unmanned Aerial Vehicles</div>
         <div class="pub-authors"><b>V. Albrekht</b>, R. I. Mukhamediev, Y. Popova, E. Muhamedijeva, A. Botaibekov</div>
-        <div class="pub-meta">Publications 13, 15 · <a href="https://doi.org/10.3390/publications13020015">doi:10.3390/publications13020015</a></div></div></li>
+        <div class="pub-meta">Publications 13, 15, <a href="https://doi.org/10.3390/publications13020015">doi:10.3390/publications13020015</a></div></div></li>
     </ol>
   </section>
 
@@ -420,7 +418,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
   <section id="about">
     <h2>Skills & background</h2>
     <dl>
-      <div class="skill-row"><dt>Training</dt><dd class="chips"><span>PyTorch</span><span>ms-swift</span><span>DeepSpeed</span><span>FSDP</span><span>GRPO / RLHF</span><span>LoRA</span><span>Slurm · 8×H100 / B200</span></dd></div>
+      <div class="skill-row"><dt>Training</dt><dd class="chips"><span>PyTorch</span><span>ms-swift</span><span>DeepSpeed</span><span>FSDP</span><span>GRPO / RLHF</span><span>LoRA</span><span>Slurm, 8×H100 / B200</span></dd></div>
       <div class="skill-row"><dt>Models</dt><dd class="chips"><span>LLMs</span><span>VLMs</span><span>Audio LLMs</span><span>Whisper ASR</span><span>Diffusion</span><span>3D Gaussian Splatting</span></dd></div>
       <div class="skill-row"><dt>Serving</dt><dd class="chips"><span>vLLM</span><span>AWQ / GPTQ / GGUF</span><span>Transformers</span><span>FastAPI</span></dd></div>
       <div class="skill-row"><dt>Building</dt><dd class="chips"><span>Python</span><span>TypeScript</span><span>three.js / WebXR</span><span>AI agents & MCP</span><span>Linux</span><span>Docker</span></dd></div>
@@ -430,7 +428,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
   </section>
 
   <footer>
-    <span>Vladimir Albrekht · Astana · updated October 2026</span>
+    <span>Vladimir Albrekht, Astana. Updated October 2026</span>
     <span>Say hi: <span class="mail">sluminat2@gmail.com</span></span>
   </footer>
 
