@@ -7,7 +7,6 @@
 <meta name="description" content="Vladimir Albrekht: ML researcher at ISSAI, Nazarbayev University. Multimodal LLMs (vision, audio, text), reasoning and RL, Kazakh AI, edge AI and 3D worlds.">
 <meta property="og:title" content="Vladimir Albrekht">
 <meta property="og:description" content="ML researcher at ISSAI, Nazarbayev University. Multimodal LLMs, reasoning and RL, Kazakh AI, edge AI, 3D worlds.">
-<meta property="og:image" content="assets/foggen-evolution.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23f6de95' stroke='%233a2a1f' stroke-width='4'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='%233a2a1f'%3EVA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -69,6 +68,8 @@ h3 { margin: 0; font: 700 17px/1.35 var(--f-ui); color: var(--text); }
 /* featured */
 .feature { display: grid; grid-template-columns: 1.05fr 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--card); }
 .feature figure { margin: 0; background: #fff; border-right: 1px solid var(--border); display: grid; place-items: center; min-height: 220px; }
+.feature figure.diagram { background: var(--card); padding: 14px; }
+.feature figure.diagram svg { width: 100%; height: auto; display: block; }
 .feature figure img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 10px; }
 .feature .body { padding: 22px 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
 .feature p { font-size: 15.5px; line-height: 1.65; }
@@ -207,6 +208,27 @@ footer { border-top: 2px solid var(--text); }
 a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
 .avatar-label { display: none; }
 
+/* Hero art: anime still as a tilted manga card over a lavender magic circle; colours tied to it. */
+:root { --accent: #3b4ea8; --blue: #3b4ea8; --accent-2: #e46a2b; --magic: #8d7bc4; }
+.hero { grid-template-columns: minmax(0, 1fr) 300px; align-items: center; }
+.hero-art { position: relative; margin: 0; width: 300px; justify-self: end; }
+.hero-art img { position: relative; z-index: 1; display: block; width: 100%; height: auto; border: 2px solid var(--text); border-radius: 6px; transform: rotate(2.2deg); box-shadow: 7px 7px 0 #f6de95; background: #fff; }
+.hero-art figcaption { position: relative; z-index: 1; margin-top: 12px; text-align: center; font: 400 12.5px/1.4 var(--f-hand); color: var(--text-3); }
+.magic { position: absolute; z-index: 0; inset: -34px; border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 54%, color-mix(in srgb, var(--magic) 45%, transparent) 54.5%, transparent 56%),
+    radial-gradient(circle, transparent 63%, color-mix(in srgb, var(--magic) 35%, transparent) 63.5%, transparent 65%),
+    repeating-conic-gradient(color-mix(in srgb, var(--magic) 22%, transparent) 0 4deg, transparent 4deg 15deg);
+  -webkit-mask: radial-gradient(circle, transparent 48%, #000 49%, #000 70%, transparent 71%);
+          mask: radial-gradient(circle, transparent 48%, #000 49%, #000 70%, transparent 71%);
+  animation: spin 60s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.mono-badge { background: #f6de95; }
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-art { width: min(270px, 78%); justify-self: center; margin-top: 18px; }
+}
+
 </style>
 </head>
 <body>
@@ -242,32 +264,48 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
         <a href="mailto:sluminat2@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>Email</a>
       </div>
     </div>
-    <div class="avatar" aria-hidden="true">
-      <svg viewBox="0 0 132 132">
-        <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--accent-bg)"/><stop offset="1" style="stop-color:var(--card)"/></linearGradient></defs>
-        <rect width="132" height="132" fill="url(#sky)"/>
-        <circle cx="94" cy="38" r="13" style="fill:var(--accent-2)" opacity=".55"/>
-        <path d="M0 92 C 22 78, 38 84, 56 74 S 92 66, 132 80 V132 H0Z" style="fill:var(--accent-line)" opacity=".8"/>
-        <path d="M0 104 C 30 94, 52 100, 76 92 S 112 90, 132 98 V132 H0Z" style="fill:var(--accent)" opacity=".28"/>
-        <g style="fill:var(--accent)"><circle cx="34" cy="52" r="2.2"/><circle cx="48" cy="44" r="2.2"/><circle cx="62" cy="52" r="2.2"/><circle cx="48" cy="60" r="2.2"/></g>
-        <g style="stroke:var(--accent)" stroke-width="1.2" opacity=".7"><path d="M34 52 48 44 62 52 48 60Z"/><path d="M34 52 62 52M48 44 48 60"/></g>
-      </svg>
-      <span class="avatar-label">steppe · nets · splats</span>
-    </div>
+    <figure class="hero-art">
+      <div class="magic" aria-hidden="true"></div>
+      <img src="assets/hero-anime.jpg" alt="Two anime card-battle heroines, the mood image of this site" width="460" height="460">
+      <figcaption>mood image · anime still, not my artwork</figcaption>
+    </figure>
   </header>
 
   <section id="work">
     <h2>Selected work <small>2024 – 2026</small></h2>
 
     <article class="feature">
-      <figure><img src="assets/foggen-evolution.jpg" alt="FogGen accuracy across 14 evolution rounds in seven domains" loading="lazy"></figure>
+      <figure class="diagram" aria-label="Idea of FogGen: the phone model states its confidence; if it is low, the question goes to the cloud">
+        <svg viewBox="0 0 360 220" role="img">
+          <g fill="none" stroke="#3a2a1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="22" y="58" width="70" height="120" rx="12" fill="#fffdf8"/>
+            <line x1="47" y1="70" x2="67" y2="70"/>
+            <rect x="34" y="84" width="46" height="34" rx="6" fill="#f6de95"/>
+            <path d="M92 118 C 130 118, 140 118, 168 118"/><path d="M160 112 l8 6 -8 6"/>
+            <path d="M268 64 c-6-22 26-30 34-12 c16-6 30 8 22 22 c12 6 6 26-10 24 h-52 c-18 0-20-26-2-30 c2-2 4-4 8-4z" fill="#e7f0fb"/>
+            <path d="M232 118 C 252 118, 262 100, 270 92"/><path d="M262 92 l9 -2 -1 9"/>
+            <path d="M232 128 C 252 140, 262 160, 280 166"/><path d="M272 170 l9 -3 -6 -7"/>
+            <circle cx="200" cy="118" r="30" fill="#fffdf8"/>
+          </g>
+          <g font-family="'Klee One', 'Zen Maru Gothic', cursive" fill="#3a2a1f" text-anchor="middle">
+            <text x="57" y="106" font-size="15">0.6B</text>
+            <text x="57" y="200" font-size="14">on the phone</text>
+            <text x="200" y="114" font-size="14">sure?</text>
+            <text x="200" y="131" font-size="12" fill="#8d7663">conf ≥ τ</text>
+            <text x="296" y="80" font-size="14">cloud</text>
+            <text x="296" y="128" font-size="12" fill="#8d7663">not sure: ask</text>
+            <text x="300" y="176" font-size="13">answer locally</text>
+            <text x="300" y="192" font-size="12" fill="#8d7663">sure: fast + cheap</text>
+          </g>
+        </svg>
+      </figure>
       <div class="body">
-        <div class="kicker">Featured · first author</div>
+        <div class="kicker">Featured · released by ISSAI</div>
         <h3>FogGen: a self-aware edge–cloud LLM router</h3>
-        <p>A 0.6B model on the phone writes a confidence score before it answers. When it is not sure, it hands the question to a 30B model in the cloud. I built the closed loop of SFT and conditional GRPO that trains this behaviour over 14 rounds in seven domains.</p>
-        <div class="flow" aria-label="FogGen flow"><span>query</span><i>→</i><span>edge 0.6B: confidence</span><i>→</i><span>sure? answer</span><i>/</i><span>else cloud 30B</span></div>
-        <div class="tags"><span class="tag p">GRPO</span><span class="tag g">calibration</span><span class="tag b">on-device</span><span class="tag">Qwen3</span></div>
-        <p class="more"><a href="https://huggingface.co/issai/foggen">Model on Hugging Face</a> · <a href="https://kitan-a.com/foggen_results/">14-round results</a></p>
+        <p>A 0.6B model on the phone writes a confidence score before it answers. When it is not sure, it hands the question to a larger model in the cloud. It learns this with a self-evolving training loop over 14 rounds in seven domains, including Kazakh culture.</p>
+        <div class="flow" aria-label="FogGen flow"><span>query</span><i>→</i><span>edge 0.6B: confidence</span><i>→</i><span>sure? answer</span><i>/</i><span>else cloud</span></div>
+        <div class="tags"><span class="tag p">self-evolving</span><span class="tag g">calibration</span><span class="tag b">on-device</span><span class="tag">Qwen3</span></div>
+        <p class="more"><a href="https://huggingface.co/issai/foggen">Model and card on Hugging Face</a></p>
       </div>
     </article>
 
@@ -315,10 +353,7 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
   <section id="papers">
     <h2>Papers <small><a href="https://www.semanticscholar.org/author/97050995">Semantic Scholar</a></small></h2>
     <ol class="pubs" reversed>
-      <li class="pub"><div class="pub-year">2026</div><div>
-        <div class="pub-title">FogGen: A Self-Evolving Edge-Cloud LLM Router with Predictive Confidence Tokens <span class="status">under review</span></div>
-        <div class="pub-authors"><b>V. Albrekht</b>, A. Maxutov, Zh. Sultanova, H. A. Varol</div>
-        <div class="pub-meta"><a href="https://huggingface.co/issai/foggen">huggingface.co/issai/foggen</a></div></div></li>
+      
       <li class="pub"><div class="pub-year">2026</div><div>
         <div class="pub-title">Translate, Search, or Answer: Cost-Aware Cross-Lingual Retrieval for Kazakh Small Language Models</div>
         <div class="pub-authors">A. Maxutov, N. Medeu, <b>V. Albrekht</b>, D. Danenov, H. A. Varol</div>
@@ -341,7 +376,6 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
       <a class="demo" href="https://kitan-a.com/3dgs/learn/"><b>Learn 3DGS</b><span>Interactive Gaussian Splatting course.</span><code>/3dgs/learn</code></a>
       <a class="demo" href="https://kitan-a.com/issai-vr/"><b>ISSAI VR</b><span>WebXR games in the NU atrium.</span><code>/issai-vr</code></a>
       <a class="demo" href="https://kitan-a.com/distributed_agents/"><b>fogswarm</b><span>One giant model or 500 small ones in browser tabs?</span><code>/distributed_agents</code></a>
-      <a class="demo" href="https://kitan-a.com/foggen_results/"><b>FogGen results</b><span>All 14 rounds of self-evolving training.</span><code>/foggen_results</code></a>
       <a class="demo" href="https://kitan-a.com/gs_playground/"><b>GS-Playground</b><span>A visual explainer.</span><code>/gs_playground</code></a>
       <a class="demo" href="https://kitan-a.com/vqvae/"><b>VQ-VAE from zero</b><span>The image tokenizer, explained.</span><code>/vqvae</code></a>
       <a class="demo" href="https://kitan-a.com/gaussiangpt/"><b>GaussianGPT from zero</b><span>Transformers that make 3D scenes.</span><code>/gaussiangpt</code></a>
