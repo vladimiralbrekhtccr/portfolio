@@ -238,6 +238,12 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
 .logo { display: inline-flex; flex: none; transition: transform .2s; }
 .logo img { display: block; width: 34px; height: 34px; }
 .logo:hover { transform: rotate(-8deg) scale(1.06); }
+
+/* Menu jump: the section stops below the sticky bar and its heading flashes yellow for about a second. */
+section[id] { scroll-margin-top: 78px; }
+html { scroll-behavior: smooth; }
+@keyframes sectionFlash { 0% { background-color: #f6de95; box-shadow: 0 0 0 10px #f6de95; } 100% { background-color: transparent; box-shadow: 0 0 0 10px transparent; } }
+section.flash > h2 { animation: sectionFlash 1.1s ease-out 1; border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -379,7 +385,6 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
     <h2>Live demos <small>open in any browser</small></h2>
     <div class="demos">
       <a class="demo" href="https://vladimiralbrekhtccr.github.io/projects/issai-vr/"><b>ISSAI VR</b><span>WebXR games in the NU atrium.</span><code>projects/issai-vr</code></a>
-      <a class="demo" href="https://kitan-a.com/distributed_agents/"><b>fogswarm</b><span>One giant model or 500 small ones in browser tabs?</span><code>/distributed_agents</code></a>
     </div>
   </section>
 
@@ -436,5 +441,20 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
   </footer>
 
 </main>
+<script>
+// Flash the heading of the section a menu link jumps to (also on a direct #link load).
+(function () {
+  function flash(id) {
+    var el = id && document.getElementById(id);
+    if (!el || el.tagName !== 'SECTION') return;
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1300);
+  }
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function () { flash(a.getAttribute('href').slice(1)); });
+  });
+  if (location.hash) setTimeout(function () { flash(location.hash.slice(1)); }, 300);
+})();
+</script>
 </body>
 </html>
