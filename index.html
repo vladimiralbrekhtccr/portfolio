@@ -243,6 +243,9 @@ a { text-decoration-style: wavy; text-decoration-thickness: 1px; }
 section[id] { scroll-margin-top: 78px; }
 html { scroll-behavior: smooth; }
 @keyframes sectionFlash { 0% { background-color: #f6de95; box-shadow: 0 0 0 10px #f6de95; } 100% { background-color: transparent; box-shadow: 0 0 0 10px transparent; } }
+/* Projects is another page, so it is a button at the right end, apart from the on-page links. */
+.nav-in a.nav-out { position: sticky; right: 0; box-shadow: -10px 0 8px 2px var(--bg); margin-left: auto; color: var(--text); font-weight: 700; border: 2px solid var(--text); border-radius: 999px; padding: 7px 13px; background: #fffdf8; }
+.nav-in a.nav-out:hover { background: #f6de95; color: var(--text); }
 section.flash > h2 { animation: sectionFlash 1.1s ease-out 1; border-radius: 3px; }
 </style>
 </head>
@@ -253,10 +256,10 @@ section.flash > h2 { animation: sectionFlash 1.1s ease-out 1; border-radius: 3px
     <a class="logo" href="#top" aria-label="Top"><img src="assets/logo.svg" alt="" width="34" height="34"></a>
     <a href="#work">Work</a>
     <a href="#papers">Papers</a>
-    <a href="https://vladimiralbrekhtccr.github.io/projects/">Projects</a>
     <a href="#open-source">Open source</a>
     <a href="#teaching">Teaching</a>
     <a href="#about">About</a>
+    <a class="nav-out" href="https://vladimiralbrekhtccr.github.io/projects/">Projects <span aria-hidden="true">↗</span></a>
   </div>
 </nav>
 
